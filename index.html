@@ -20,6 +20,8 @@
       --trail-light: #A5D6A7;
       --pack: #F9A825;
       --pack-light: #FFE082;
+      --nutri: #00c96b;
+      --nutri-light: #6ee7b7;
       --accent: #FF6B35;
     }
 
@@ -150,6 +152,13 @@
     .card--pack { border-color: rgba(249,168,37,.3); }
     .card--pack:hover { box-shadow: 0 24px 60px rgba(249,168,37,.12); }
 
+    /* nutri card accent */
+    .card--nutri .card-header {
+      background: linear-gradient(135deg, rgba(0,201,107,.2) 0%, rgba(0,201,107,.05) 100%);
+    }
+    .card--nutri { border-color: rgba(0,201,107,.3); }
+    .card--nutri:hover { box-shadow: 0 24px 60px rgba(0,201,107,.12); }
+
     .card-icon {
       width: 64px;
       height: 64px;
@@ -188,6 +197,15 @@
     .card--pack .card-tag {
       background: rgba(249,168,37,.18);
       color: var(--pack-light);
+    }
+
+    .card--nutri .card-icon {
+      background: linear-gradient(135deg, #064e2e, #0a7c3e);
+    }
+
+    .card--nutri .card-tag {
+      background: rgba(0,201,107,.18);
+      color: var(--nutri-light);
     }
 
     .card h2 {
@@ -394,7 +412,7 @@
       <div class="stat-label">Ítems de equipamiento</div>
     </div>
     <div class="stat">
-      <div class="stat-value">2</div>
+      <div class="stat-value">3</div>
       <div class="stat-label">Apps disponibles</div>
     </div>
   </div>
@@ -480,6 +498,42 @@
           📱 APK Android
         </a>
         <a class="btn btn-ghost" href="https://github.com/arielsavini/packandgo" target="_blank" rel="noopener">
+          ⌨️ Código
+        </a>
+      </div>
+    </article>
+
+    <!-- NutriRun -->
+    <article class="card card--nutri">
+      <div class="card-header">
+        <div class="card-icon">💧</div>
+        <span class="card-tag">Hidratación · Nutrición</span>
+        <h2>NutriRun</h2>
+        <p class="card-subtitle">Calculadora de hidratación y nutrición para corredores</p>
+      </div>
+      <div class="card-body">
+        <p class="card-description">
+          Calculá cuánto líquido, geles y electrolitos necesitás según distancia, temperatura e intensidad. Con plan de carrera km a km.
+        </p>
+        <ul class="features">
+          <li>Soporte para 5K, 10K, 21K, 42K y distancias custom</li>
+          <li>Ajuste por temperatura y peso corporal</li>
+          <li>Plan de hidratación y nutrición por puntos de km</li>
+          <li>Alertas por calor extremo y sudoración alta</li>
+          <li>Disponible en web · funciona offline (PWA)</li>
+        </ul>
+        <div class="tech-row">
+          <span class="tech">HTML/CSS</span>
+          <span class="tech">JavaScript</span>
+          <span class="tech">PWA</span>
+          <span class="tech">Web</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a class="btn btn-primary--trail" href="https://arielsavini.github.io/nutrirun/" target="_blank" rel="noopener" style="background:var(--nutri);color:#000">
+          🌐 Abrir app
+        </a>
+        <a class="btn btn-ghost" href="https://github.com/arielsavini/nutrirun" target="_blank" rel="noopener">
           ⌨️ Código
         </a>
       </div>
