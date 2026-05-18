@@ -208,6 +208,22 @@
       color: var(--nutri-light);
     }
 
+    /* dorsal card accent */
+    .card--dorsal .card-header {
+      background: linear-gradient(135deg, rgba(230,57,70,.2) 0%, rgba(230,57,70,.05) 100%);
+    }
+    .card--dorsal { border-color: rgba(230,57,70,.3); }
+    .card--dorsal:hover { box-shadow: 0 24px 60px rgba(230,57,70,.12); }
+
+    .card--dorsal .card-icon {
+      background: linear-gradient(135deg, #5a0a10, #a01020);
+    }
+
+    .card--dorsal .card-tag {
+      background: rgba(230,57,70,.18);
+      color: #fca5a5;
+    }
+
     .card h2 {
       font-size: 1.5rem;
       font-weight: 800;
@@ -412,7 +428,7 @@
       <div class="stat-label">Ítems de equipamiento</div>
     </div>
     <div class="stat">
-      <div class="stat-value">3</div>
+      <div class="stat-value">4</div>
       <div class="stat-label">Apps disponibles</div>
     </div>
   </div>
@@ -534,6 +550,42 @@
           🌐 Abrir app
         </a>
         <a class="btn btn-ghost" href="https://github.com/arielsavini/nutrirun" target="_blank" rel="noopener">
+          ⌨️ Código
+        </a>
+      </div>
+    </article>
+
+    <!-- DorsalRun -->
+    <article class="card card--dorsal">
+      <div class="card-header">
+        <div class="card-icon">🏅</div>
+        <span class="card-tag">Dorsal · Personalización</span>
+        <h2>DorsalRun</h2>
+        <p class="card-subtitle">Generador de dorsal personalizado para compartir</p>
+      </div>
+      <div class="card-body">
+        <p class="card-description">
+          Creá tu dorsal con tu nombre, número y evento. Elegí entre 4 diseños (Trail, Road, Ultra, Clásico), personalizá el color y descargalo como imagen PNG para compartir en redes antes de tu carrera.
+        </p>
+        <ul class="features">
+          <li>4 plantillas de diseño: Trail, Road, Ultra, Clásico</li>
+          <li>7 colores de acento personalizables</li>
+          <li>Preview en tiempo real con canvas HTML5</li>
+          <li>Descarga en alta resolución (PNG 2x)</li>
+          <li>Funciona offline · sin registro</li>
+        </ul>
+        <div class="tech-row">
+          <span class="tech">HTML/CSS</span>
+          <span class="tech">Canvas API</span>
+          <span class="tech">JavaScript</span>
+          <span class="tech">PWA</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a class="btn btn-primary--trail" href="https://arielsavini.github.io/dorsalrun/" target="_blank" rel="noopener" style="background:#e63946;color:#fff">
+          🌐 Abrir app
+        </a>
+        <a class="btn btn-ghost" href="https://github.com/arielsavini/dorsalrun" target="_blank" rel="noopener">
           ⌨️ Código
         </a>
       </div>
