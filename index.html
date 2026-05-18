@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ariel Savini · Apps para corredores</title>
+  <meta name="description" content="Apps para runners y ciclistas. Calendario de carreras en Argentina y checklist de equipamiento." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0f0f13;
+      --surface: #18181f;
+      --border: #2a2a35;
+      --text: #f0f0f0;
+      --muted: #888;
+      --trail: #4CAF50;
+      --trail-light: #A5D6A7;
+      --pack: #F9A825;
+      --pack-light: #FFE082;
+      --accent: #FF6B35;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── HERO ─────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      padding: 80px 24px 60px;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 30% 40%, rgba(76,175,80,.15) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 50% at 70% 60%, rgba(249,168,37,.10) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(76,175,80,.15);
+      border: 1px solid rgba(76,175,80,.4);
+      color: var(--trail-light);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      border-radius: 999px;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 7vw, 4rem);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -.02em;
+      margin-bottom: 16px;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(135deg, var(--trail) 0%, var(--pack) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      font-size: clamp(1rem, 3vw, 1.25rem);
+      color: var(--muted);
+      max-width: 480px;
+      margin: 0 auto 40px;
+      line-height: 1.6;
+    }
+
+    .hero-icons {
+      font-size: 2.5rem;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      opacity: .6;
+    }
+
+    /* ── APPS GRID ────────────────────────────────────── */
+    .apps {
+      padding: 20px 24px 80px;
+      max-width: 960px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 28px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: transform .25s ease, box-shadow .25s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 60px rgba(0,0,0,.5);
+    }
+
+    .card-header {
+      padding: 32px 28px 24px;
+      position: relative;
+    }
+
+    .card-header::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* trail card accent */
+    .card--trail .card-header {
+      background: linear-gradient(135deg, rgba(27,94,32,.35) 0%, rgba(27,94,32,.1) 100%);
+    }
+    .card--trail { border-color: rgba(76,175,80,.3); }
+    .card--trail:hover { box-shadow: 0 24px 60px rgba(76,175,80,.15); }
+
+    /* pack card accent */
+    .card--pack .card-header {
+      background: linear-gradient(135deg, rgba(249,168,37,.2) 0%, rgba(249,168,37,.05) 100%);
+    }
+    .card--pack { border-color: rgba(249,168,37,.3); }
+    .card--pack:hover { box-shadow: 0 24px 60px rgba(249,168,37,.12); }
+
+    .card-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      margin-bottom: 16px;
+    }
+
+    .card--trail .card-icon {
+      background: linear-gradient(135deg, #1B5E20, #388E3C);
+    }
+
+    .card--pack .card-icon {
+      background: linear-gradient(135deg, #1B5E20, #F9A825);
+    }
+
+    .card-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 999px;
+      margin-bottom: 10px;
+    }
+
+    .card--trail .card-tag {
+      background: rgba(76,175,80,.18);
+      color: var(--trail-light);
+    }
+
+    .card--pack .card-tag {
+      background: rgba(249,168,37,.18);
+      color: var(--pack-light);
+    }
+
+    .card h2 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+      letter-spacing: -.01em;
+    }
+
+    .card-subtitle {
+      font-size: .875rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .card-body {
+      padding: 24px 28px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .card-description {
+      font-size: .95rem;
+      color: #ccc;
+      line-height: 1.65;
+    }
+
+    /* features list */
+    .features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .features li {
+      font-size: .875rem;
+      color: #aaa;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .features li::before {
+      content: '✓';
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .card--trail .features li::before { color: var(--trail); }
+    .card--pack .features li::before { color: var(--pack); }
+
+    /* tech badges */
+    .tech-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tech {
+      font-size: 11px;
+      font-weight: 600;
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.1);
+      color: #aaa;
+      padding: 3px 9px;
+      border-radius: 6px;
+    }
+
+    /* CTA buttons */
+    .card-footer {
+      padding: 0 28px 28px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-size: .875rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: opacity .2s, transform .15s;
+      cursor: pointer;
+    }
+
+    .btn:hover { opacity: .85; transform: scale(1.03); }
+
+    .btn-primary--trail {
+      background: linear-gradient(135deg, #2E7D32, #4CAF50);
+      color: #fff;
+    }
+
+    .btn-primary--pack {
+      background: linear-gradient(135deg, #1B5E20, #F9A825);
+      color: #fff;
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+
+    .btn-ghost:hover { border-color: #555; color: #ccc; }
+
+    /* ── STATS STRIP ─────────────────────────────────── */
+    .stats {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px 60px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-value {
+      font-size: 2rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--trail), var(--pack));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .stat-label {
+      font-size: .8rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-top: 4px;
+    }
+
+    /* ── DIVIDER ─────────────────────────────────────── */
+    .divider {
+      max-width: 960px;
+      margin: 0 auto 60px;
+      padding: 0 24px;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── FOOTER ──────────────────────────────────────── */
+    footer {
+      text-align: center;
+      padding: 32px 24px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: .85rem;
+    }
+
+    footer a {
+      color: var(--trail-light);
+      text-decoration: none;
+    }
+
+    footer a:hover { text-decoration: underline; }
+
+    /* ── RESPONSIVE ──────────────────────────────────── */
+    @media (max-width: 480px) {
+      .hero { padding: 56px 20px 40px; }
+      .apps { padding-bottom: 56px; gap: 20px; }
+      .card-header, .card-body { padding-left: 20px; padding-right: 20px; }
+      .card-footer { padding-left: 20px; padding-right: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── HERO ── -->
+  <header class="hero">
+    <div class="hero-badge">Claudio Ariel Savini</div>
+    <h1>Apps para<br /><span>corredores</span></h1>
+    <p>Herramientas simples para organizar tu entrenamiento, carreras y equipamiento.</p>
+    <div class="hero-icons">
+      <span>🏃</span><span>🚴</span><span>🏔️</span><span>🗓️</span>
+    </div>
+  </header>
+
+  <!-- ── STATS ── -->
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-value">52</div>
+      <div class="stat-label">Carreras en calendario</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">5</div>
+      <div class="stat-label">Provincias cubiertas</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">32</div>
+      <div class="stat-label">Ítems de equipamiento</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">2</div>
+      <div class="stat-label">Apps disponibles</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ── APPS GRID ── -->
+  <main class="apps">
+
+    <!-- Run & Trail VM -->
+    <article class="card card--trail">
+      <div class="card-header">
+        <div class="card-icon">🏔️</div>
+        <span class="card-tag">Calendario · Carreras</span>
+        <h2>Run &amp; Trail VM</h2>
+        <p class="card-subtitle">Calendario de running y trail en Argentina</p>
+      </div>
+      <div class="card-body">
+        <p class="card-description">
+          Encontrá todas las carreras de running, trail y duatlón en Argentina. Filtrá por provincia, tipo y fecha. Registrá tus tiempos y no te pierdas ninguna largada.
+        </p>
+        <ul class="features">
+          <li>52 carreras en 5 provincias (y contando)</li>
+          <li>Filtros por tipo: road, trail, ultra, duatlón</li>
+          <li>Próximas y pasadas separadas</li>
+          <li>Clima en tiempo real por carrera</li>
+          <li>Registro de tus tiempos personales</li>
+        </ul>
+        <div class="tech-row">
+          <span class="tech">Vue.js</span>
+          <span class="tech">Firebase</span>
+          <span class="tech">HTML/CSS</span>
+          <span class="tech">Web</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a class="btn btn-primary--trail" href="https://arielsavini.github.io/runandtrailvm/" target="_blank" rel="noopener">
+          🌐 Abrir app
+        </a>
+        <a class="btn btn-ghost" href="https://github.com/arielsavini/runandtrailvm" target="_blank" rel="noopener">
+          ⌨️ Código
+        </a>
+      </div>
+    </article>
+
+    <!-- Pack & Go -->
+    <article class="card card--pack">
+      <div class="card-header">
+        <div class="card-icon">✅</div>
+        <span class="card-tag">Checklist · Equipamiento</span>
+        <h2>Pack &amp; Go</h2>
+        <p class="card-subtitle">Chequea todo antes de salir a entrenar</p>
+      </div>
+      <div class="card-body">
+        <p class="card-description">
+          ¿Ya tenés todo? Chequeá tu equipamiento antes de salir a correr o andar en bici. Indispensables, opcionales, y una barra de progreso para saber si estás listo.
+        </p>
+        <ul class="features">
+          <li>Checklists para running y ciclismo</li>
+          <li>Ítems indispensables y opcionales</li>
+          <li>Barra de progreso con alerta visual</li>
+          <li>Agregar, editar y eliminar ítems</li>
+          <li>Disponible en web y Android (APK)</li>
+        </ul>
+        <div class="tech-row">
+          <span class="tech">React Native</span>
+          <span class="tech">Expo</span>
+          <span class="tech">TypeScript</span>
+          <span class="tech">Android</span>
+          <span class="tech">Web</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a class="btn btn-primary--pack" href="https://arielsavini.github.io/packandgo/" target="_blank" rel="noopener">
+          🌐 Abrir app
+        </a>
+        <a class="btn btn-ghost" href="https://expo.dev/accounts/arielsavini/projects/packandgo/builds/8d8f099e-74e9-44d5-93f6-d2e300e90593" target="_blank" rel="noopener">
+          📱 APK Android
+        </a>
+        <a class="btn btn-ghost" href="https://github.com/arielsavini/packandgo" target="_blank" rel="noopener">
+          ⌨️ Código
+        </a>
+      </div>
+    </article>
+
+  </main>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <p>Hecho con ♥ para corredores · <a href="https://github.com/arielsavini" target="_blank" rel="noopener">@arielsavini</a> · 2026</p>
+  </footer>
+
+</body>
+</html>
