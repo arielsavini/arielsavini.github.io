@@ -25,6 +25,8 @@
       --accent: #FF6B35;
       --bodybib: #8b5cf6;
       --bodybib-light: #c4b5fd;
+      --fuelbot: #f97316;
+      --fuelbot-light: #fdba74;
     }
 
     html { scroll-behavior: smooth; }
@@ -230,6 +232,21 @@
     .card--bodybib .card-tag {
       background: rgba(139,92,246,.15);
       color: var(--bodybib-light);
+    }
+
+    /* fuelbot card accent */
+    .card--fuelbot .card-header {
+      background: linear-gradient(135deg, rgba(249,115,22,.18) 0%, rgba(249,115,22,.04) 100%);
+    }
+    .card--fuelbot { border-color: rgba(249,115,22,.3); }
+    .card--fuelbot:hover { box-shadow: 0 24px 60px rgba(249,115,22,.18); }
+    .card--fuelbot .card-icon {
+      background: rgba(249,115,22,.15);
+      color: var(--fuelbot-light);
+    }
+    .card--fuelbot .card-tag {
+      background: rgba(249,115,22,.15);
+      color: var(--fuelbot-light);
     }
 
     .card--dorsal .card-icon {
@@ -445,7 +462,7 @@
       <div class="stat-label">Ítems de equipamiento</div>
     </div>
     <div class="stat">
-      <div class="stat-value">5</div>
+      <div class="stat-value">6</div>
       <div class="stat-label">Apps disponibles</div>
     </div>
   </div>
@@ -640,6 +657,33 @@
           🌐 Abrir app
         </a>
         <a class="btn btn-ghost" href="https://github.com/arielsavini/bodybib" target="_blank" rel="noopener">
+          ⌨️ Código
+        </a>
+      </div>
+    </article>
+
+    <!-- FuelBot -->
+    <article class="card card--fuelbot">
+      <div class="card-header">
+        <div class="card-icon">🔥</div>
+        <span class="card-tag">Nutrición · Fatiga · IA</span>
+      </div>
+      <div class="card-body">
+        <h2>FuelBot</h2>
+        <p>Asistente de nutrición predictiva en tiempo real. Detecta fatiga por variabilidad de cadencia y predice cuándo vas a necesitar agua o gel <em>antes</em> de sentir la pared.</p>
+        <ul class="feature-list">
+          <li>⚡ Detección de pasos por acelerómetro</li>
+          <li>📉 Análisis de caída de cadencia</li>
+          <li>💧 Predicción de hidratación personalizada</li>
+          <li>🍬 Alertas de gel basadas en fatiga real</li>
+          <li>📱 Funciona sin GPS ni wearable</li>
+        </ul>
+      </div>
+      <div class="card-footer">
+        <a class="btn btn-primary--trail" href="https://arielsavini.github.io/fuelbot/" target="_blank" rel="noopener" style="background:var(--fuelbot);color:#000">
+          🌐 Abrir app
+        </a>
+        <a class="btn btn-ghost" href="https://github.com/arielsavini/fuelbot" target="_blank" rel="noopener">
           ⌨️ Código
         </a>
       </div>
