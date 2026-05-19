@@ -27,6 +27,8 @@
       --bodybib-light: #c4b5fd;
       --fuelbot: #f97316;
       --fuelbot-light: #fdba74;
+      --medalbox: #ffd700;
+      --medalbox-light: #ffe878;
     }
 
     html { scroll-behavior: smooth; }
@@ -249,6 +251,36 @@
       color: var(--fuelbot-light);
     }
 
+    /* medalbox card accent */
+    .card--medalbox .card-header {
+      background: linear-gradient(135deg, rgba(255,215,0,.15) 0%, rgba(255,215,0,.03) 100%);
+    }
+    .card--medalbox { border-color: rgba(255,215,0,.3); }
+    .card--medalbox:hover { box-shadow: 0 24px 60px rgba(255,215,0,.18); }
+    .card--medalbox .card-icon {
+      background: rgba(255,215,0,.13);
+      color: var(--medalbox-light);
+    }
+    .card--medalbox .card-tag {
+      background: rgba(255,215,0,.13);
+      color: var(--medalbox-light);
+    }
+
+    /* medalbox card accent */
+    .card--medalbox .card-header {
+      background: linear-gradient(135deg, rgba(255,215,0,.15) 0%, rgba(255,215,0,.03) 100%);
+    }
+    .card--medalbox { border-color: rgba(255,215,0,.3); }
+    .card--medalbox:hover { box-shadow: 0 24px 60px rgba(255,215,0,.18); }
+    .card--medalbox .card-icon {
+      background: rgba(255,215,0,.13);
+      color: var(--medalbox-light);
+    }
+    .card--medalbox .card-tag {
+      background: rgba(255,215,0,.13);
+      color: var(--medalbox-light);
+    }
+
     .card--dorsal .card-icon {
       background: linear-gradient(135deg, #5a0a10, #a01020);
     }
@@ -462,7 +494,7 @@
       <div class="stat-label">Ítems de equipamiento</div>
     </div>
     <div class="stat">
-      <div class="stat-value">6</div>
+      <div class="stat-value">7</div>
       <div class="stat-label">Apps disponibles</div>
     </div>
   </div>
@@ -684,6 +716,43 @@
           🌐 Abrir app
         </a>
         <a class="btn btn-ghost" href="https://github.com/arielsavini/fuelbot" target="_blank" rel="noopener">
+          ⌨️ Código
+        </a>
+      </div>
+    </article>
+
+    <!-- MedalBox -->
+    <article class="card card--medalbox">
+      <div class="card-header">
+        <div class="card-icon">🏅</div>
+        <span class="card-tag">Medallas · Foto · IA</span>
+        <h2>MedalBox</h2>
+        <p class="card-subtitle">Vitrina virtual de tus medallas deportivas</p>
+      </div>
+      <div class="card-body">
+        <p class="card-description">
+          Subí la foto de tu medalla física, remové el fondo con IA y colgala en tu vitrina virtual interactiva. Agregá las estadísticas de la carrera y compartí tu logro en redes con una tarjeta generada automáticamente.
+        </p>
+        <ul class="features">
+          <li>Vitrina con pared de madera estilo trofeos</li>
+          <li>Remoción de fondo con IA (100% en el navegador)</li>
+          <li>Tarjeta de compartir 1080×1080 con Canvas API</li>
+          <li>Estadísticas: distancia, tiempo, posición y fecha</li>
+          <li>Cintas: Oro, Plata, Bronce o Azul</li>
+          <li>Funciona offline · sin registro · sin servidor</li>
+        </ul>
+        <div class="tech-row">
+          <span class="tech">Canvas API</span>
+          <span class="tech">@imgly/bg-removal</span>
+          <span class="tech">localStorage</span>
+          <span class="tech">PWA</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a class="btn btn-primary--trail" href="https://arielsavini.github.io/medalbox/" target="_blank" rel="noopener" style="background:var(--medalbox);color:#000">
+          🌐 Abrir app
+        </a>
+        <a class="btn btn-ghost" href="https://github.com/arielsavini/medalbox" target="_blank" rel="noopener">
           ⌨️ Código
         </a>
       </div>
