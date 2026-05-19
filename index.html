@@ -23,6 +23,8 @@
       --nutri: #00c96b;
       --nutri-light: #6ee7b7;
       --accent: #FF6B35;
+      --bodybib: #8b5cf6;
+      --bodybib-light: #c4b5fd;
     }
 
     html { scroll-behavior: smooth; }
@@ -213,7 +215,21 @@
       background: linear-gradient(135deg, rgba(230,57,70,.2) 0%, rgba(230,57,70,.05) 100%);
     }
     .card--dorsal { border-color: rgba(230,57,70,.3); }
-    .card--dorsal:hover { box-shadow: 0 24px 60px rgba(230,57,70,.12); }
+    .card--dorsal:hover { box-shadow: 0 24px 60px rgba(230,57,70,... /* existing */
+    /* bodybib card accent */
+    .card--bodybib .card-header {
+      background: linear-gradient(135deg, rgba(139,92,246,.18) 0%, rgba(139,92,246,.04) 100%);
+    }
+    .card--bodybib { border-color: rgba(139,92,246,.3); }
+    .card--bodybib:hover { box-shadow: 0 24px 60px rgba(139,92,246,.18); }
+    .card--bodybib .card-icon {
+      background: rgba(139,92,246,.15);
+      color: var(--bodybib-light);
+    }
+    .card--bodybib .card-tag {
+      background: rgba(139,92,246,.15);
+      color: var(--bodybib-light);
+    }
 
     .card--dorsal .card-icon {
       background: linear-gradient(135deg, #5a0a10, #a01020);
@@ -428,7 +444,7 @@
       <div class="stat-label">Ítems de equipamiento</div>
     </div>
     <div class="stat">
-      <div class="stat-value">4</div>
+      <div class="stat-value">5</div>
       <div class="stat-label">Apps disponibles</div>
     </div>
   </div>
@@ -586,6 +602,43 @@
           🌐 Abrir app
         </a>
         <a class="btn btn-ghost" href="https://github.com/arielsavini/dorsalrun" target="_blank" rel="noopener">
+          ⌨️ Código
+        </a>
+      </div>
+    </article>
+
+    <!-- BodyBib -->
+    <article class="card card--bodybib">
+      <div class="card-header">
+        <div class="card-icon">📸</div>
+        <span class="card-tag">AR · Dorsal · Foto</span>
+        <h2>BodyBib</h2>
+        <p class="card-subtitle">Ponete el dorsal en realidad aumentada y tomá la foto</p>
+      </div>
+      <div class="card-body">
+        <p class="card-description">
+          Configurá tu dorsal, abrí la cámara y el dorsal se superpone sobre tu cuerpo en tiempo real. Posicionalo con drag &amp; pinch, o usá la IA para detectar tu torso automáticamente, y capturá la foto para compartir.
+        </p>
+        <ul class="features">
+          <li>Cámara en vivo con dorsal superpuesto (AR)</li>
+          <li>4 plantillas de dorsal: Trail, Road, Ultra, Clásico</li>
+          <li>Drag &amp; pinch para posicionar y escalar</li>
+          <li>Auto-detección de cuerpo con IA (TensorFlow MoveNet)</li>
+          <li>Captura y compartí directo desde la app</li>
+          <li>Funciona offline · sin registro</li>
+        </ul>
+        <div class="tech-row">
+          <span class="tech">Canvas API</span>
+          <span class="tech">TensorFlow.js</span>
+          <span class="tech">MediaDevices</span>
+          <span class="tech">PWA</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a class="btn btn-primary--trail" href="https://arielsavini.github.io/bodybib/" target="_blank" rel="noopener" style="background:var(--bodybib);color:#fff">
+          🌐 Abrir app
+        </a>
+        <a class="btn btn-ghost" href="https://github.com/arielsavini/bodybib" target="_blank" rel="noopener">
           ⌨️ Código
         </a>
       </div>
