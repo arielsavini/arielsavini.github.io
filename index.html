@@ -29,6 +29,8 @@
       --fuelbot-light: #fdba74;
       --medalbox: #ffd700;
       --medalbox-light: #ffe878;
+      --trailprompt: #4ade80;
+      --trailprompt-light: #86efac;
     }
 
     html { scroll-behavior: smooth; }
@@ -281,6 +283,21 @@
       color: var(--medalbox-light);
     }
 
+    /* trailprompt card accent */
+    .card--trailprompt .card-header {
+      background: linear-gradient(135deg, rgba(74,222,128,.12) 0%, rgba(74,222,128,.03) 100%);
+    }
+    .card--trailprompt { border-color: rgba(74,222,128,.3); }
+    .card--trailprompt:hover { box-shadow: 0 24px 60px rgba(74,222,128,.18); }
+    .card--trailprompt .card-icon {
+      background: rgba(74,222,128,.13);
+      color: var(--trailprompt-light);
+    }
+    .card--trailprompt .card-tag {
+      background: rgba(74,222,128,.13);
+      color: var(--trailprompt-light);
+    }
+
     .card--dorsal .card-icon {
       background: linear-gradient(135deg, #5a0a10, #a01020);
     }
@@ -494,7 +511,7 @@
       <div class="stat-label">Ítems de equipamiento</div>
     </div>
     <div class="stat">
-      <div class="stat-value">7</div>
+      <div class="stat-value">8</div>
       <div class="stat-label">Apps disponibles</div>
     </div>
   </div>
@@ -753,6 +770,43 @@
           🌐 Abrir app
         </a>
         <a class="btn btn-ghost" href="https://github.com/arielsavini/medalbox" target="_blank" rel="noopener">
+          ⌨️ Código
+        </a>
+      </div>
+    </article>
+
+    <!-- TrailPrompt -->
+    <article class="card card--trailprompt">
+      <div class="card-header">
+        <div class="card-icon">🗺️</div>
+        <span class="card-tag">GPS · GPX · OSM</span>
+        <h2>TrailPrompt</h2>
+        <p class="card-subtitle">Describí tu ruta ideal, descargá el GPX</p>
+      </div>
+      <div class="card-body">
+        <p class="card-description">
+          Escribí en lenguaje natural la ruta que soñás — distancia, formato, terreno, desnivel — y la app genera un track GPX descargable en segundos sobre cartografía OpenStreetMap real.
+        </p>
+        <ul class="features">
+          <li>Parser NLP: distancia, loop/ida-vuelta, desnivel y biomas</li>
+          <li>Mapa interactivo OSM con Leaflet.js</li>
+          <li>Perfil de elevación simulado con función seno</li>
+          <li>GPX estándar compatible con Garmin, Strava y Komoot</li>
+          <li>GPS automático del navegador · sin registro</li>
+          <li>Funciona offline · sin API key · PWA</li>
+        </ul>
+        <div class="tech-row">
+          <span class="tech">Leaflet.js</span>
+          <span class="tech">GPX / XML</span>
+          <span class="tech">OSM Tiles</span>
+          <span class="tech">PWA</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a class="btn btn-primary--trail" href="https://arielsavini.github.io/trailprompt/" target="_blank" rel="noopener" style="background:var(--trailprompt);color:#052e0f">
+          🌐 Abrir app
+        </a>
+        <a class="btn btn-ghost" href="https://github.com/arielsavini/trailprompt" target="_blank" rel="noopener">
           ⌨️ Código
         </a>
       </div>
